@@ -122,7 +122,6 @@ async function getAmenities(base, amenitiesJSON){
         amenitiesDict[record.name] = {id: record.id};
     }   
 
-    // const amenitiesList = amenitiesJSON.map((amenitie) => (amenitiesDict[amenitie]));  
     const amenitiesList = amenitiesJSON.map((amenitie) => mapAmenitie(amenitiesDict, amenitie));  
     return amenitiesList.filter((amenitie) => amenitie.id != undefined); 
 }
