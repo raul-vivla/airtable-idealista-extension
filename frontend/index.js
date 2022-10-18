@@ -80,28 +80,29 @@ function getScraperResultFromMsg(msg){
 }
 
 async function addDatoToView(base, data, idIdealista){
-    const table = base.getTableByName('Table Test');
+    const table = base.getTableByName('Web links');
     const amenities = await getAmenities(base, data.amenities);
     console.log(data);
 
     table.createRecordAsync({
-        'Name': idIdealista,
-        'mainImg': data.mainImg,
-        'price': data.price,
-        'description': data.description,
-        'location': data.location,
-        'sqm': data.sqm,
-        'bedrooms': data.bedrooms,
-        'bathrooms': data.bathrooms,
-        "gallery": getGallery(data.gallery),
-        "videoUrl": data.video,
-        "virtualTourUrl": data.virtualTour,
-        "isNewConstruction": (data.priceInfo.isNewConstruction) ? true : false,
-        "region": data.priceInfo.regionTaxex.region,
-        "needsFurniture": true,
-        "fractionPrice": data.priceInfo.totalOwnership,
-        "amenities": amenities,
-        "features": getFeatures(data.features)
+        'Name': 'Idealista_' + idIdealista,
+        'Scraper Id': idIdealista,
+        'Scraper MainImg': data.mainImg,
+        'Scraper Price': data.price,
+        'Scraper Description': data.description,
+        'Scraper Location': data.location,
+        'Scraper SQM': data.sqm,
+        'Scraper Bedrooms': data.bedrooms,
+        'Scraper Bathrooms': data.bathrooms,
+        "Scraper Gallery": getGallery(data.gallery),
+        "Scraper VideoUrl": data.video,
+        "Scraper VirtualTourUrl": data.virtualTour,
+        "Scraper IsNewConstruction": (data.priceInfo.isNewConstruction) ? true : false,
+        "Scraper TaxRegion": data.priceInfo.regionTaxex.region,
+        "Scraper NeedsFurniture": true,
+        "Scraper FractionPrice": data.priceInfo.totalOwnership,
+        "Scraper Amenities": amenities,
+        "Scraper Features": getFeatures(data.features)
 
     }).then(function (recordId) {
         alert(`new record created! ID: ${recordId}`);
